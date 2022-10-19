@@ -1,24 +1,23 @@
+import Header from "components/Header";
+import Form from "components/Form/Form";
 import "./App.css";
-import logo from "./logo.svg";
 
 function App() {
+  const props = {
+    title: "Login Form",
+    button: {
+      txt: "Login",
+      type: "submit",
+    },
+    label: "Email",
+    fields: ["Email", "Password"],
+  };
+
   return (
-    <div className="text-center">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://beta.reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React (Beta Docs)
-        </a>
-      </header>
-    </div>
+    <>
+      {Header(props)}
+      {Form(props)}
+    </>
   );
 }
 

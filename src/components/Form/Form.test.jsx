@@ -3,11 +3,16 @@ import Form from "./Form";
 
 describe("Form", () => {
   it("renders with the correct number of inputs", () => {
-    const fields = ["email", "password"];
+    const fields = [
+      { label: "email", type: "email" },
+      { label: "password", type: "password" },
+    ];
     render(<Form label={fields} />);
 
-    const form = screen.getAllByRole(myLabel);
+    const emailInput = screen.getByLabelText("email");
+    const passwordInput = screen.getByLabelText("password");
 
-    expect(input).toBeInTheDocument();
+    expect(emailInput).toBeInTheDocument();
+    expect(passwordInput).toBeInTheDocument();
   });
 });

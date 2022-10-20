@@ -5,8 +5,8 @@ import Input from "./Input";
 function Form({ fields, button }) {
   return (
     <form className="mx-auto mt-2 max-w-xs">
-      {fields.map((input) => <Input label= {input} />))}
-      <Button(button) />
+      {fields.map((input) => <Input label= {input} />)}
+      <Button (button) />
     </form>
   );
 }

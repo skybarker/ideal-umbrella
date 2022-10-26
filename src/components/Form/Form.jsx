@@ -2,18 +2,26 @@ import PropTypes from "prop-types";
 import Button from "./Button";
 import Input from "./Input";
 
-function Form({ fields, button }) {
+export default function Form({ fields, button }) {
   return (
-    <form className="mx-auto mt-2 max-w-xs">
-      {fields.map((input) => <Input label= {input} />)}
-      <Button (button) />
+    <form>
+      {fields.map((field) => (
+        <Input key={field.label} label={field.label} type={field.type} />
+      ))}
+      <Button txt={button.txt} type={button.type} />
     </form>
   );
 }
 
 Form.propTypes = {
-  fields: PropTypes.string.isRequired,
-  button: PropTypes.string.isRequired,
+  fields: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      type: PropTypes.string,
+    })
+  ).isRequired,
+  button: PropTypes.shape({
+    txt: PropTypes.string.isRequired,
+    type: PropTypes.oneOf(["submit", "button"]),
+  }).isRequired,
 };
-
-export default Form;

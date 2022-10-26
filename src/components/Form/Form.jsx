@@ -4,12 +4,19 @@ import Button from "./Button";
 // import Input from "./Input";
 
 export default function Form({ fields, button }) {
-  const [name, setUsername] = React.useState("");
-  const [email, setEmail] = React.useState("");
+  const [values, setValues] = React.useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+  // const [email, setEmail] = React.useState("");
 
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
+  const handleSubmit = (e) => {
+    setValues((oldValues) => ({
+      ...oldValues,
+      [e.target.name]: e.target.value,
+    }));
+  };
   return (
     <form onSubmit={handleSubmit}>
       <div className="mt-4 flex flex-col">
@@ -19,8 +26,8 @@ export default function Form({ fields, button }) {
           type={fields.username.type}
           id={fields.username.label}
           placeholder={fields.username.label}
-          value={name}
-          onChange={(e) => setUsername(e.target.value)}
+          value={values.username}
+          onChange={handleSubmit}
         />
       </div>
       <div className="mt-4 flex flex-col">
@@ -30,8 +37,8 @@ export default function Form({ fields, button }) {
           type={fields.email.type}
           id={fields.email.label}
           placeholder={fields.email.label}
-          value={name}
-          onChange={(e) => setEmail(e.target.value)}
+          value={values.email}
+          onChange={handleSubmit}
         />
       </div>
 

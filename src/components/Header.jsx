@@ -1,11 +1,12 @@
 import PropTypes from "prop-types";
 
-function Header({ title }) {
+export default function Header({ title }) {
   return <h1 className="my-4 text-center text-3xl font-semibold">{title}</h1>;
 }
 
 Header.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
 };
-
-export default Header;
+Header.defaultProps = {
+  title: "Welcome",
+};

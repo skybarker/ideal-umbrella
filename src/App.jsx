@@ -9,10 +9,11 @@ function App() {
       txt: "Login",
       type: "submit",
     },
-    fields: [
-      { label: "email", type: "email" },
-      { label: "password", type: "password" },
-    ],
+    fields: {
+      username: { label: "username", type: "text", key: "username" },
+      email: { label: "email", type: "email", key: "email" },
+      password: { label: "password", type: "password", key: "password" },
+    },
   };
 
   App.propTypes = {

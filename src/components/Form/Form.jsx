@@ -3,8 +3,16 @@ import Button from "./Button";
 import Input from "./Input";
 
 export default function Form({ fields, button }) {
+  function handleSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
+    const elements = form.getElementsByTagName("input");
+    console.log(elements.email.value);
+    console.log(elements.password.value);
+  }
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       {fields.map((field) => (
         <Input key={field.label} label={field.label} type={field.type} />
       ))}
